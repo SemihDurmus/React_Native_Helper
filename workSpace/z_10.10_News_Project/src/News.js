@@ -48,6 +48,15 @@ const news_data = [
         imageUrl:
             'https://image.cnbcfm.com/api/v1/image/105737636-1550147305726gettyimages-1034802076rr.jpg?v=1601647142',
     },
+    {
+        id: 5,
+        author: 'Jessica Bursztynsky',
+        title: 'Twilio hits new 52-week high as stock',
+        description:
+            'Shares of Twilio extended its gains into Friday, reaching a 52-week high, after the company said in a filing that it expects better-than-expected third-quarter revenue.',
+        imageUrl:
+            'https://image.cnbcfm.com/api/v1/image/105737636-1550147305726gettyimages-1034802076rr.jpg?v=1601647142',
+    },
 ];
 const banner_data = [
     {
@@ -84,25 +93,48 @@ const banner_data = [
 
 const News = () => {
 
-    const renderNewsData = ({ item }) => <NewsCard news={item} />
+    const renderNewsData = ({item }) => <NewsCard news={item} />
 
     const listHeader = () => {
         return (
-            <>
-                <Text style={{ fontWeight: 'bold', fontSize: 50, margin: 10 }}>News</Text>
+            <>  
+                <View style={{backgroundColor: "red"}}>
+                    <Text style={{ fontWeight: 'bold', fontSize: 40, margin: 7, color:"#FFF" }}>News</Text>
+                </View>
                 <ScrollView horizontal showsHorizontalScrollIndicator={false}>
                     {
                         banner_data.map(banner_item => {
                             return (
-                                <Image
-                                    source={{ uri: banner_item.imageUrl }}
-                                    style={{
-                                        width: Dimensions.get('window').width * 0.90,
-                                        height: Dimensions.get('window').height / 4,
+                                <View style={{   
+                                    width: Dimensions.get('window').width * 0.90,
+                                    height: Dimensions.get('window').height / 4,
+                                    margin: 5,
+                                    borderRadius: 10}}>
+
+                                    <Image
+                                        source={{ uri: banner_item.imageUrl }}
+                                        style={{
+                                            width: "100%",
+                                            height: "100%",
+                                            margin: 5,
+                                            borderRadius: 10,
+                                        }}
+                                    />
+
+                                    <View style={{
+                                        position: "absolute",
+                                        width: "100%",
                                         margin: 5,
-                                        borderRadius: 10
-                                    }}
-                                />
+                                        backgroundColor: "rgba(0,0,0,0.4)",
+                                        padding: 10,
+                                        bottom:0,
+                                        
+                                    }}>
+                                        <Text style={{color:"#FFF", fontWeight:"bold", fontSize:18}}>{banner_item.text}</Text>
+
+                                    </View>
+
+                                </View>
                             )
                         })
                     }
@@ -115,12 +147,12 @@ const News = () => {
         <SafeAreaView>
 
             <FlatList
-                keyExtractor={(item, index) => index.toString()}
                 data={news_data}
                 renderItem={renderNewsData}
-                numColumns={2}
+                keyExtractor={(item, index) => index.toString()}
+                numColumns={3}
                 contentContainerStyle={{
-                    justifyContent: 'space-between'
+                justifyContent: 'space-between'
                 }}
                 ListHeaderComponent={listHeader}
             />
@@ -128,7 +160,6 @@ const News = () => {
         </SafeAreaView>
     )
 }
-
 export default News
 
 
