@@ -18,11 +18,12 @@ const App = () => {
   const [todos, setTodos] = useState([]);
   const [text, setText] = useState('');
 
-  const submitHandler = (a) => {
+  const AddToList = (a) => {
     setTodos(() => {
       return [{desc: a, id: todos.length}, ...todos];
     });
   };
+
   const delButton = (index) => {
     return (
       <TouchableOpacity
@@ -74,7 +75,7 @@ const App = () => {
             <TouchableOpacity
               style={styles.button}
               onPress={() => {
-                submitHandler(text);
+                AddToList(text);
                 setText('');
                 setCounter(todos.length == undefined ? 0 : todos.length + 1);
               }}>
@@ -118,7 +119,7 @@ const styles = StyleSheet.create({
     flex: 2,
     backgroundColor: '#B0BFC6',
     margin: 10,
-    marginVertical: 15,
+    marginVertical: 20,
     borderRadius: 20,
     alignItems: 'center',
     justifyContent: 'space-around',
@@ -133,13 +134,15 @@ const styles = StyleSheet.create({
     marginHorizontal: 20,
     marginVertical: 10,
     paddingLeft: 10,
-    fontSize: 15,
+    fontSize: 17,
   },
   button: {
     backgroundColor: '#546F7A',
     padding: 10,
     marginBottom: 5,
     borderRadius: 10,
+    borderColor: '#FFA827',
+    borderWidth: 1,
     width: '45%',
     alignItems: 'center',
     justifyContent: 'center',
@@ -154,7 +157,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     backgroundColor: '#546F7A',
-    margin: 10,
+    marginHorizontal: 10,
+    marginVertical: 6,
     alignItems: 'center',
     paddingRight: 15,
     borderRadius: 10,
@@ -165,7 +169,8 @@ const styles = StyleSheet.create({
     marginVertical: 7,
     padding: 8,
     color: '#FCFFFF',
-    fontSize: 17,
+    fontSize: 18,
+    fontWeight: 'bold',
     borderRadius: 10,
   },
   deleteButton: {
