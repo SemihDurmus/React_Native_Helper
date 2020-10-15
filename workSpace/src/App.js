@@ -19,9 +19,11 @@ const App = () => {
   const [text, setText] = useState('');
 
   const AddToList = (a) => {
-    setTodos(() => {
-      return [{desc: a, id: todos.length}, ...todos];
-    });
+    a === ''
+      ? alert('You should write something')
+      : setTodos(() => {
+          return [{desc: a, id: todos.length}, ...todos];
+        });
   };
 
   const delButton = (index) => {
@@ -42,6 +44,7 @@ const App = () => {
       </TouchableOpacity>
     );
   };
+
   return (
     <KeyboardAvoidingView
       style={{flex: 1}}
@@ -162,6 +165,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingRight: 15,
     borderRadius: 10,
+    borderColor: '#B0BFC6',
+    borderWidth: 1,
   },
   listText: {
     backgroundColor: '#546F7A',
