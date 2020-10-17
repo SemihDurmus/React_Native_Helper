@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   SafeAreaView,
   View,
@@ -6,9 +6,7 @@ import {
   TextInput,
   StyleSheet,
   TouchableOpacity,
-  ScrollView,
   KeyboardAvoidingView,
-  Dimensions,
   FlatList,
   Platform,
 } from 'react-native';
@@ -25,11 +23,9 @@ const App = () => {
           return [{desc: a, id: todos.length}, ...todos];
         });
   };
-
   const delButton = (index) => {
     return (
       <TouchableOpacity
-        style={styles.deleteButton}
         onPress={() => {
           setTodos((order) => {
             order.splice(index, 1);
@@ -40,7 +36,7 @@ const App = () => {
           });
           setCounter(todos.length);
         }}>
-        <Text style={styles.deleteButtonText}>{'❌'}</Text>
+        <Text>{'❌'}</Text>
       </TouchableOpacity>
     );
   };
@@ -71,7 +67,7 @@ const App = () => {
           <View style={styles.input}>
             <TextInput
               style={styles.inputText}
-              onChangeText={(val) => setText(val)}
+              onChangeText={(x) => setText(x)}
               placeholder={'Enter a ToDo item..'}
               value={text}
             />
@@ -80,7 +76,7 @@ const App = () => {
               onPress={() => {
                 AddToList(text);
                 setText('');
-                setCounter(todos.length == undefined ? 0 : todos.length + 1);
+                setCounter(todos.length + 1);
               }}>
               <Text style={styles.buttonText}>ADD</Text>
             </TouchableOpacity>
@@ -159,7 +155,7 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    backgroundColor: '#546F7A',
+    backgroundColor: '#dfe6e9',
     marginHorizontal: 10,
     marginVertical: 6,
     alignItems: 'center',
@@ -169,26 +165,13 @@ const styles = StyleSheet.create({
     borderWidth: 1,
   },
   listText: {
-    backgroundColor: '#546F7A',
     marginHorizontal: 10,
     marginVertical: 7,
     padding: 8,
-    color: '#FCFFFF',
+    color: '#36474F',
     fontSize: 18,
     fontWeight: 'bold',
     borderRadius: 10,
-  },
-  deleteButton: {
-    backgroundColor: '#efefef',
-    borderRadius: 5,
-    width: 30,
-    height: 30,
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: 3,
-  },
-  deleteButtonText: {
-    fontWeight: 'bold',
-    color: 'white',
+    // color: 'green',
   },
 });
