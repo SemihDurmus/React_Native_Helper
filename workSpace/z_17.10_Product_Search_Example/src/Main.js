@@ -10,6 +10,7 @@ import {
   TextInput,
 } from 'react-native';
 import {ProductCard} from './components';
+import {InputArea} from './components';
 import productData from './product_data.json'; //we can use any Name
 
 const App = () => {
@@ -26,13 +27,13 @@ const App = () => {
   }, []);
 
   useEffect(() => {
-    const filteredValue = productData.filter((item) => {
+    const filteredArray = productData.filter((item) => {
       const text = searchValue.toUpperCase();
       const productTitle = item.title.toUpperCase();
 
       return productTitle.indexOf(text) !== -1;
     });
-    setDisplayList(filteredValue);
+    setDisplayList(filteredArray);
   }, [searchValue]);
 
   return (
@@ -46,11 +47,12 @@ const App = () => {
           <TextInput
             value={searchValue}
             style={styles.inputText}
-            placeholder="🔎  Search a product"
+            placeholder="Search a product"
             onChangeText={(val) => {
               setSearchValue(val);
             }}
           />
+          <Text style={styles.glass}>🔎 </Text>
         </View>
 
         <FlatList
@@ -80,6 +82,7 @@ const styles = StyleSheet.create({
   search_area: {
     backgroundColor: '#38006b',
     padding: 15,
+    paddingLeft: 50,
     borderTopColor: 'yellow',
     borderTopWidth: 1,
   },
@@ -87,5 +90,11 @@ const styles = StyleSheet.create({
     color: '#FFF',
     fontSize: 18,
     fontWeight: 'bold',
+  },
+  glass: {
+    position: 'absolute',
+    top: 10,
+    left: 10,
+    fontSize: 30,
   },
 });
