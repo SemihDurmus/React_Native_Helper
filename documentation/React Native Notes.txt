@@ -182,7 +182,7 @@ Class component'larda ES6 ile gelen class yapisindadirlar. Functional component'
 => props'a string deger -> "..." veya {"..."}
 => Mac vs code -> bir kelimeyi seçip command + d yaptigimizda ayni sayfadaki ayni kelimeyi secer. Her bastigimizda ayni olan bir kelime daha secer. Bu sekilde bir değişken, fonksiyon,component vb ismi degistiriken sayfadaki tum elemanları gözden kaçırmadan değiştirebiliriz. 
 
-///////////// 20.10.2020 NAVIGATION
+///////////// 20.10.2020 STACK_NAVIGATION
 => reactnativeelements native olmayan UI cozumleri bulabileceğimiz bir site
 => reactnativexpress react-native dokümanı gibi, belli noktalarda ondan daha gelişmiş bir kaynak
 => Sayfada basta import etmediğimiz bir component yazarken vscode'da auto import calisabilir. Bu noktada dikkat etmek gerek! Auto import'u gesture-handler'dan import etmediğinden emin olmak gerek.
@@ -198,3 +198,8 @@ Class component'larda ES6 ile gelen class yapisindadirlar. Functional component'
 => onPress={() => props.navigation.goBack()}
 => props.navigation.navigate('name') ile sayfa geçişi yapıyorduk, name den sonra object tipinde ikinci bir parametre ile veri girersek bu verileri de diğer sayfaya gönderebiliriz. Yani, props.navigation.navigate('SecondPage', { selectedValue: userName }) dersek ikinci sayfaya giderken selectedValue ismi ile userName olarak tanımladığım bir veriyi , diğer sayfaya gönderebiliriz.  Gidilen sayfada gönderdiğimiz bu veriyi props.route.params.selectedValue ile yakalayıp istediğimiz gibi kullanabiliriz. props.route.params ın devamına, gönderilen sayfada hangi isimle göndermişsek onu yazıyoruz. Bu örnekte selectedValue ile userName gönderdiğimiz için props.route.params.selectedValue  yazdık, selectedValue yakalamış olduk.
 
+///////////// 22.10.2020 TAB_NAVIGATION
+=> initialRouteNAme ile yazılma sırasına bağlı kalmaksızın acilista ekranda ilk görülecek component seciyoruz
+=> Lens extension'ing ile yüklenen paketlerin surum kontrolunu yapabiliyoruz. Ancak sürümleri güncellemek icin npm install komutunu kullanmak gerek.
+=> TouchableWithoutFeedback component içerisine sadece 1 component alıyor. Bu komponent fragment <></> olmamalı.
+=> Text in numberOfLines={2} prop'u ile istenen sayıda satiri goruntuleyebilriz. 
