@@ -187,4 +187,14 @@ Class component'larda ES6 ile gelen class yapisindadirlar. Functional component'
 => reactnativexpress react-native dokümanı gibi, belli noktalarda ondan daha gelişmiş bir kaynak
 => Sayfada basta import etmediğimiz bir component yazarken vscode'da auto import calisabilir. Bu noktada dikkat etmek gerek! Auto import'u gesture-handler'dan import etmediğinden emin olmak gerek.
 => npm install  yapılan paket iceriklerini bulabileceğimiz dosya: package.json 
+=> Stack sayfalar arası geçişi sağlayan navigation yapılarından bir tanesi.. (drawer gibi, tab gibi başka yapılar da var) . 
+=> Stack in iki parametresi var.. Stack.Navigator ile sarmallama yapacağız, Stack.Screen ile arayüzde göstereceğimiz herbir sayfayı parametre olarak component adı ile tanımlayacağız.
+  <Stack.Navigator>
+        <Stack.Screen name="FirstPage" component={First}/> 
+        <Stack.Screen name="SecondPage" component={Second} />
+  </Stack.Navigator>
+=> Stack.Screen de verdiğim name header da görünür, ayrıca sayfalar arası geçişte name attribute nu kullanacağız.  component attribute önemli, hangi sayfaya gidileceğini yazmış oluyoruz- hazırladığımız component lerden biri olan First.js den dolayı component e First yazdık.
+=> onPress={() => props.navigation.navigate('name')  ile button tıklandığında sayfa geçişi sağlanır. parametre olarak Router.js de (ana sayfada) Stack.Screen de name olarak tanımladığımız ismi yazıyoruz. Örneğin "SecondPage" olarak tanımladığımız sayfaya gitmek için  onPress={() => props.navigation.navigate('SecondPage' yazıyoruz.
+=> onPress={() => props.navigation.goBack()}
+=> props.navigation.navigate('name') ile sayfa geçişi yapıyorduk, name den sonra object tipinde ikinci bir parametre ile veri girersek bu verileri de diğer sayfaya gönderebiliriz. Yani, props.navigation.navigate('SecondPage', { selectedValue: userName }) dersek ikinci sayfaya giderken selectedValue ismi ile userName olarak tanımladığım bir veriyi , diğer sayfaya gönderebiliriz.  Gidilen sayfada gönderdiğimiz bu veriyi props.route.params.selectedValue ile yakalayıp istediğimiz gibi kullanabiliriz. props.route.params ın devamına, gönderilen sayfada hangi isimle göndermişsek onu yazıyoruz. Bu örnekte selectedValue ile userName gönderdiğimiz için props.route.params.selectedValue  yazdık, selectedValue yakalamış olduk.
 
