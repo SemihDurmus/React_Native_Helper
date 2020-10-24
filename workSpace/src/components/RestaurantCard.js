@@ -15,25 +15,14 @@ const RestaurantCard = (props) => {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.headerText}>Salty Curry</Text>
+        <Text style={styles.headerText}>{props.item.name}</Text>
       </View>
       <View style={styles.type}>
-        <Text style={styles.typeText}>Carribean</Text>
+        <Text style={styles.typeText}>{props.item.type}</Text>
       </View>
-      <Image
-        style={styles.img}
-        source={{uri: 'https://loremflickr.com/500/500/restaurant'}}
-      />
-      <Text style={styles.desc}>
-        SVIs mission is to deliver quality products at affordable prices to our
-        independent retailers, wholesalers and food service partners around the
-        world by providing international procurement, distribution, marketing
-        and supply chain management.
-      </Text>
-      <Text style={styles.review}>
-        This particular location like the many other restaurants down the block
-        has ample seating and a second floor.
-      </Text>
+      <Image style={styles.logo} source={{uri: props.item.logo}} />
+      <Text style={styles.desc}>{props.item.description}</Text>
+      <Text style={styles.review}>{props.item.review}</Text>
     </View>
   );
 };
@@ -59,13 +48,13 @@ const styles = StyleSheet.create({
     padding: 10,
     margin: 10,
     borderRadius: 5,
-    backgroundColor: 'yellowgreen',
+    backgroundColor: '#1dd1a1',
   },
   typeText: {
     fontWeight: 'bold',
     fontSize: 15,
   },
-  img: {
+  logo: {
     height: Dimensions.get('window').height * 0.3,
     margin: 10,
   },
