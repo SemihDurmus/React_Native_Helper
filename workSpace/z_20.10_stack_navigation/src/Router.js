@@ -25,3 +25,5 @@ function Router() {
 }
 
 export default Router;
+
+// gestureEnabled={Platform.OS === 'ios' ? false : true}
