@@ -203,3 +203,14 @@ Class component'larda ES6 ile gelen class yapisindadirlar. Functional component'
 => Lens extension'ing ile yüklenen paketlerin surum kontrolunu yapabiliyoruz. Ancak sürümleri güncellemek icin npm install komutunu kullanmak gerek.
 => TouchableWithoutFeedback component içerisine sadece 1 component alıyor. Bu komponent fragment <></> olmamalı.
 => Text in numberOfLines={2} prop'u ile istenen sayıda satiri goruntuleyebilriz. 
+
+///////////// 24.10.2020 RESTful Web API
+
+
+GET is used to request data from a specified resource.
+GET requests remain in the browser history
+GET requests have length restrictions
+GET requests are only used to request data (not modify)
+POST is used to send data to a server to create/update a resource.
+POST requests do not remain in the browser history
+POST requests have no restrictions on data length
