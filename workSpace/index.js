@@ -5,7 +5,7 @@
 import 'react-native-gesture-handler';
 import {AppRegistry} from 'react-native';
 
-import AnyAppName from './src/Main';
+import AnyAppName from './src/Router';
 
 import {name as appName} from './app.json';
 
