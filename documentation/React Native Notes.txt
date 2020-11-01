@@ -201,11 +201,10 @@ Class component'larda ES6 ile gelen class yapisindadirlar. Functional component'
 ///////////// 22.10.2020 TAB_NAVIGATION
 => initialRouteNAme ile yazılma sırasına bağlı kalmaksızın acilista ekranda ilk görülecek component seciyoruz
 => Lens extension'ing ile yüklenen paketlerin surum kontrolunu yapabiliyoruz. Ancak sürümleri güncellemek icin npm install komutunu kullanmak gerek.
-=> TouchableWithoutFeedback component içerisine sadece 1 component alıyor. Bu komponent fragment <></> olmamalı.
+=> TouchableWithoutFeedback component içerisine sadece 1 component alıyor. Bu komponent fragment <></> haricinde birsey olmali.
 => Text in numberOfLines={2} prop'u ile istenen sayıda satiri goruntuleyebilriz. 
 
 ///////////// 24.10.2020 RESTful Web API
-
 
 GET is used to request data from a specified resource.
 GET requests remain in the browser history
@@ -214,3 +213,82 @@ GET requests are only used to request data (not modify)
 POST is used to send data to a server to create/update a resource.
 POST requests do not remain in the browser history
 POST requests have no restrictions on data length
+
+///////////// 01.11.2020 DEBUG/RELEASE - APK - TEST - PERFORMANS - APP ICON - FIREBASE
+
+=> Debug Mode - Release mode--> npx react-native run-android --variant release 
+=> Release mode ile emulatode programi run ettigimizde canli bir telefonda calisir gibi tepki verir. Debug modda oldugu gibi degisiklik yapip save ettigimizde refresh olmaz, hata oldugunda kirmizi/sari renklerle uyari vermez. Hata oldugunda crash olur.
+=> Release ve debug modlar arasi gecis yaparken telefondaki programi silmek gerekir. Bunun icin 
+   adb uninstall com.packageName    (Bir android komutudur[adb - Android debug bridge]. Mevcut programi telefondan silmek icin kullanilir. )
+                                    (Android package name icin android/app/src/main/AndroidManifest.xml -> package="com.packageName")
+   Kalan dosyalardaki degerlerin birbiri uzerine yazilmasini veya mudahalesini onlemek icin gradlew clean ile cache temizlense iyi olur.
+   cd android && ./gradlew clean && cd ..
+=> Uygulamanin apk dosyasini android telefona copy-paste edip acarak kullanabiliriz. Bu IOS icin gecerli degil!
+   apk dosyasi nerede? -> android/app/build/output/apk/release
+=> Telefona default olarak yuklenmis kullanim yeri olmayan sinir bozucu uygulamalar da adb uninstall ile silinebilir.
+=> Release modda programin hatalarini Android Studio programindaki logcat ciktilari ile gorebiliriz.
+   Flipper isimli programi indirerek ayni verilere daga derli toplu ulasabiliriz.
+=> adb logcat > C:\log.txt ile hatalar kayit altina alinabilir.
+=> Performans icin React-native dokumani incelenbilir
+=> Test icin tavsiye edilen 3 yontem:
+   - detox paketi - grey box
+   - enzym (web)
+   - jest
+   NOT: white box: fonksioyon ve birim elemanlarin fonlsiyon testi, black box: kullanici gozuyle test. Grey box: bu ikisinin birlesimi
+=> Publishing icin resmi dokuman en iyi kaynak.
+=> Android app iconun yeri: android/app/src/main/res icindeki tum klasorler
+   Android app ikonu tasarimi icin tavsiye site : Android Asset Studio (nurik.github.io/AndroidAssetStudio/index.html)
+=> IOS icon icin -> Appstore'daki icon set creator ugulamasi
+   IOS icin yeri -> ios/projectname/Images.xcassets/AppIcon.appiconset
+=> IOS'ta da android'e benzer sekilde canli telefona X-code programi ile yazdigimiz app'i gonderebiliriz. Ama kullanim suresi 1 hafta ile sinirli kalir.
+   ~?  npx react-native run-ios --configuration release
+=> OneSignal -> Notification icin
+=> Firebase'in bircok backhand, server vb. islevleri var.
+   React Native Firebase dokumani cok iyi: https://rnfirebase.io/
+=> ??Android Studio -> Create virtual device -> Google Play olan bir cihazi indir
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
